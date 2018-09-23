@@ -1,0 +1,219 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}嘟嘟读书城-首页{% endblock title %}
+{% block topfiles %}
+{% endblock topfiles %}
+{% block body %}
+
+	<div class="navbar_con">
+		<div class="navbar">
+			<h1 class="fl">全部商品分类</h1>
+			<ul class="navlist fl">
+				<li><a href="">首页</a></li>
+				<li class="interval">|</li>
+				<li><a href="">移动端书城</a></li>
+				<li class="interval">|</li>
+				<li><a href="/books/{{ ran }}/">书海</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="center_con clearfix">
+		<ul class="subnav fl">
+			<li><a href="#model01" class="python">IT技术</a></li>
+			<li><a href="#model02" class="javascript">古典名著</a></li>
+			<li><a href="#model03" class="algorithms">课本教材</a></li>
+			<li><a href="#model04" class="machinelearning">少儿读物</a></li>
+			<li><a href="#model05" class="operatingsystem">科幻小说</a></li>
+			<li><a href="#model06" class="database">鉴赏收藏</a></li>
+		</ul>
+		<div class="slide fl">
+			<ul class="slide_pics">
+				<li><img src="{% static 'images/slide.jpg' %}" alt="幻灯片" style="width: 760px; height: 270px;"></li>
+				<li><img src="{% static 'images/slide02.jpg' %}" alt="幻灯片" style="width: 760px; height: 270px;"></li>
+				<li><img src="{% static 'images/slide03.jpg' %}" alt="幻灯片" style="width: 760px; height: 270px;"></li>
+				<li><img src="{% static 'images/slide04.jpg' %}" alt="幻灯片" style="width: 760px; height: 270px;"></li>
+			</ul>
+			<div class="prev"></div>
+			<div class="next"></div>
+			<ul class="points"></ul>
+		</div>
+		<div class="adv fl">
+			<a href="#"><img src="{% static 'images/adv01.jpg' %}" style="width: 240px; height: 135px;"></a>
+			<a href="#"><img src="{% static 'images/adv02.jpg' %}" style="width: 240px; height: 135px;"></a>
+		</div>
+	</div>
+
+	<div class="list_model">
+		<div class="list_title clearfix">
+			<h3 class="fl" id="model01">IT技术</h3>
+			<div class="subtitle fl">
+				<span>|</span>
+                {% for book in python_new %}
+				    <a href="{% url 'books:detail' books_id=book.id %}">{{ book.name }}</a>
+                {% endfor %}
+			</div>
+			<a href="{% url 'books:list' type_id=1 page=1 %}" class="book_more fr">查看更多 ></a>
+		</div>
+
+		<div class="book_con clearfix" style=" width: 1200px; height: 300px; margin: auto; position: relative; ">
+			<div class="book_banner fl" style=" width:200px; height: 300px; position: absolute; left: 0px;">
+                <img src="{% static 'images/banner01.jpg' %}">
+            </div>
+
+            <ul class="book_list fl" style=" width: 1000px; height: 300px; position: absolute; left: 200px; ">
+                {% for book in python_hot %}
+                    <li>
+                        <h4><a href="{% url 'books:detail' books_id=book.id %}">{{ book.name }}</a></h4>
+                        <a href="{% url 'books:detail' books_id=book.id %}"><img src="{% static book.image %}"></a>
+                        <div class="prize">¥ {{ book.price }}</div>
+                    </li>
+                    {% endfor %}
+            </ul>
+		</div>
+	</div>
+
+
+	<div class="list_model">
+		<div class="list_title clearfix">
+			<h3 class="fl" id="model02">古典名著</h3>
+			<div class="subtitle fl">
+				<span>|</span>
+                {% for book in javascript_new %}
+				    <a href="{% url 'books:detail' books_id=book.id %}">{{ book.name }}</a>
+                {% endfor %}
+			</div>
+			<a href="{% url 'books:list' type_id=2 page=1 %}" class="book_more fr">查看更多 ></a>
+		</div>
+
+
+		<div class="book_con clearfix" style=" width: 1200px; height: 300px; margin: auto; position: relative; ">
+			<div class="book_banner fl" style=" width:200px; height: 300px; position: absolute; left: 0px;">
+                <img src="{% static 'images/banner02.jpg' %}">
+            </div>
+
+			<ul class="book_list fl" style=" width: 1000px; height: 300px; position: absolute; left: 200px; ">
+                {% for book in javascript_hot %}
+				<li>
+					<h4><a href="{% url 'books:detail' books_id=book.id %}">{{ book.name }}</a></h4>
+					<a href="{% url 'books:detail' books_id=book.id %}"><img src="{% static book.image %}"></a>
+					<div class="prize">¥ {{ book.price }}</div>
+				</li>
+				{% endfor %}
+			</ul>
+		</div>
+	</div>
+
+	<div class="list_model">
+		<div class="list_title clearfix">
+			<h3 class="fl" id="model03">课本教材</h3>
+			<div class="subtitle fl">
+				<span>|</span>
+                {% for book in algorithms_new %}
+				    <a href="{% url 'books:detail' books_id=book.id %}">{{ book.name }}</a>
+                {% endfor %}
+			</div>
+			<a href="{% url 'books:list' type_id=3 page=1 %}" class="book_more fr">查看更多 ></a>
+		</div>
+
+		<div class="book_con clearfix" style=" width: 1200px; height: 300px; margin: auto; position: relative; ">
+			<div class="book_banner fl" style=" width:200px; height: 300px; position: absolute; left: 0px;">
+                <img src="{% static 'images/banner03.jpg' %}">
+            </div>
+			<ul class="book_list fl" style=" width: 1000px; height: 300px; position: absolute; left: 200px; ">
+                {% for book in algorithms_hot %}
+				<li>
+					<h4><a href="{% url 'books:detail' books_id=book.id %}">{{ book.name }}</a></h4>
+					<a href="{% url 'books:detail' books_id=book.id %}"><img src="{% static book.image %}"></a>
+					<div class="prize">¥ {{ book.price }}</div>
+				</li>
+				{% endfor %}
+			</ul>
+		</div>
+	</div>
+
+	<div class="list_model">
+		<div class="list_title clearfix">
+			<h3 class="fl" id="model04">少儿读物</h3>
+			<div class="subtitle fl">
+				<span>|</span>
+                {% for book in machinelearning_new %}
+				    <a href="{% url 'books:detail' books_id=book.id %}">{{ book.name }}</a>
+                {% endfor %}
+			</div>
+			<a href="{% url 'books:list' type_id=4 page=1 %}" class="book_more fr">查看更多 ></a>
+		</div>
+
+		<div class="book_con clearfix" style=" width: 1200px; height: 300px; margin: auto; position: relative; ">
+			<div class="book_banner fl" style=" width:200px; height: 300px; position: absolute; left: 0px;">
+                <img src="{% static 'images/banner04.jpg' %}">
+            </div>
+			<ul class="book_list fl" style=" width: 1000px; height: 300px; position: absolute; left: 200px; ">
+                {% for book in machinelearning_hot %}
+				<li>
+					<h4><a href="{% url 'books:detail' books_id=book.id %}">{{ book.name }}</a></h4>
+					<a href="{% url 'books:detail' books_id=book.id %}"><img src="{% static book.image %}"></a>
+					<div class="prize">¥ {{ book.price }}</div>
+				</li>
+				{% endfor %}
+			</ul>
+		</div>
+	</div>
+
+	<div class="list_model">
+		<div class="list_title clearfix">
+			<h3 class="fl" id="model05">科幻小说</h3>
+			<div class="subtitle fl">
+				<span>|</span>
+                {% for book in operatingsystem_new %}
+				    <a href="{% url 'books:detail' books_id=book.id %}">{{ book.name }}</a>
+                {% endfor %}
+			</div>
+			<a href="{% url 'books:list' type_id=5 page=1 %}" class="book_more fr">查看更多 ></a>
+		</div>
+
+		<div class="book_con clearfix" style=" width: 1200px; height: 300px; margin: auto; position: relative; ">
+			<div class="book_banner fl" style=" width:200px; height: 300px; position: absolute; left: 0px;">
+                <img src="{% static 'images/banner05.jpg' %}">
+            </div>
+			<ul class="book_list fl" style=" width: 1000px; height: 300px; position: absolute; left: 200px; ">
+                {% for book in operatingsystem_hot %}
+				<li>
+					<h4><a href="{% url 'books:detail' books_id=book.id %}">{{ book.name }}</a></h4>
+					<a href="{% url 'books:detail' books_id=book.id %}"><img src="{% static book.image %}"></a>
+					<div class="prize">¥ {{ book.price }}</div>
+				</li>
+				{% endfor %}
+			</ul>
+		</div>
+	</div>
+
+	<div class="list_model">
+		<div class="list_title clearfix">
+			<h3 class="fl" id="model06">鉴赏收藏</h3>
+			<div class="subtitle fl">
+				<span>|</span>
+                {% for book in database_new %}
+				    <a href="{% url 'books:detail' books_id=book.id %}">{{ book.name }}</a>
+                {% endfor %}
+			</div>
+			<a href="{% url 'books:list' type_id=6 page=1 %}" class="book_more fr">查看更多 ></a>
+		</div>
+
+		<div class="book_con clearfix" style=" width: 1200px; height: 300px; margin: auto; position: relative; ">
+			<div class="book_banner fl" style=" width:200px; height: 300px; position: absolute; left: 0px;">
+                <img src="{% static 'images/banner06.jpg' %}">
+            </div>
+			<ul class="book_list fl" style=" width: 1000px; height: 300px; position: absolute; left: 200px; ">
+                {% for book in database_hot %}
+				<li>
+					<h4><a href="{% url 'books:detail' books_id=book.id %}">{{ book.name }}</a></h4>
+					<a href="{% url 'books:detail' books_id=book.id %}"><img src="{% static book.image %}"></a>
+					<div class="prize">¥ {{ book.price }}</div>
+				</li>
+				{% endfor %}
+			</ul>
+		</div>
+	</div>
+
+{% endblock body %}

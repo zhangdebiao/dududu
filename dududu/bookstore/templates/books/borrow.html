@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}嘟嘟读书城-商品借阅页{% endblock title %}
+{% block topfiles %}
+{% endblock topfiles %}
+{% block body %}
+
+	<div class="navbar_con">
+		<div class="navbar clearfix">
+			<div class="subnav_con fl">
+				<h1>全部商品分类</h1>	
+				<span></span>			
+				<ul class="subnav">
+					<li><a href="#model01" class="python">IT技术</a></li>
+                    <li><a href="#model02" class="javascript">古典名著</a></li>
+                    <li><a href="#model03" class="algorithms">课本教材</a></li>
+                    <li><a href="#model04" class="machinelearning">少儿读物</a></li>
+                    <li><a href="#model05" class="operatingsystem">科幻小说</a></li>
+                    <li><a href="#model06" class="database">鉴赏收藏</a></li>
+				</ul>
+			</div>
+			<ul class="navlist fl">
+				<li><a href="/">首页</a></li>
+				<li class="interval">|</li>
+				<li><a href="">移动端书城</a></li>
+				<li class="interval">|</li>
+				<li><a href="/books/{{ ran }}/">书海</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="breadcrumb">
+		<a href="#">全部分类</a>
+		<span>></span>
+		<a href="#">{{ type_title }}</a>
+		<span>></span>
+        <a href="#">{{ book.name }}</a>
+	</div>
+
+	<div class="main_wrap clearfix">
+		<div class="l_wrap fl clearfix">
+			<div class="new_book">
+				<h3>新品推荐</h3>
+				<ul>
+                    {% for book in books_new %}
+					<li>
+						<a href="{% url 'books:detail' books_id=book.id %}"><img src="{% static book.image %}"></a>
+						<h4><a href="{% url 'books:detail' books_id=book.id %}">{{ book.name }}</a></h4>
+						<div class="prize">￥{{ book.price }}/{{ book.unit }}</div>
+					</li>
+					{% endfor %}
+				</ul>
+            </div>
+		</div>
+
+		<div class="r_wrap fr clearfix">
+            <div>
+                <ul class="site_con">
+                    <h4>尊敬的嘟嘟读用户您好：</h4>
+                    <h4>&ensp;&ensp;&ensp;&ensp;我们已经以邮件的形式通知了商品发布者，请您注意消息通知~</h4>
+                    <h4>&ensp;&ensp;&ensp;&ensp;请您登录 <a href="http://192.168.0.101:8000/" target="_blank">嘟嘟读-实时聊天系统</a> 联系商品发布者。*_*</h4>
+                    <h4>&ensp;&ensp;&ensp;&ensp;系统为您生成的实时聊天系统房间号为：<b>{{ room_id }}</b></h4>
+                </ul>
+            </div>
+            <ul class="">
+                <li>
+                    <a href="{% url 'books:detail' books_id=book.id %}"><img style="width:250px;height:250px" src="{% static book.image %}"></a>
+                    <h4><b>商品名称：</b><a href="{% url 'books:detail' books_id=book.id %}">{{ book.name }}</a></h4>
+                    <h4><b>商品发布者：</b><span class="unit">{{ book.publisher }}</span></h4>
+                    <h4><b>商品简介：</b><span class="unit">{{ book.desc }}</span></h4>
+                    <br>
+                </li>
+			</ul>
+        </div>
+	</div>
+{% endblock body %}

@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}嘟嘟读书城-用户中心上传页{% endblock %}
+{% block topfiles %}
+{% endblock topfiles %}
+{% block body %}
+
+	<div class="main_con clearfix">
+		<div class="left_menu_con clearfix">
+			<h3>用户中心</h3>
+			<ul>
+				<li><a href="{% url 'user:user' %}">· 个人信息</a></li>
+				<li><a href="{% url 'user:order' %}">· 全部订单</a></li>
+				<li><a href="{% url 'user:address' %}">· 收货地址</a></li>
+				<li><a href="{% url 'user:collect' %}">· 我的收藏</a></li>
+				<li><a href="{% url 'user:upload' %}" class="active">· 上传图书</a></li>
+			</ul>
+		</div>
+
+        <!--<div class="right_content clearfix"">
+                <h3 class="common_title2"> <b>上传图书</b></h3>
+                <br>
+                <h3>对不起，您没有该权限，请联系站长</h3>
+                <h3>Tel：18530021345</h3>
+                <h3>QQ：843345000</h3>
+        </div>-->
+
+        <div class="right_content clearfix">
+            <h3 class="common_title2">上架商品</h3>
+            <div class="site_con">
+                <form method="post" action="/user/upload/" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form_group">
+                        <label>商品种类：</label>
+                        <select name="type_id" style="width:100px; height:35px">
+                          <option value ="1">IT技术</option>
+                          <option value ="2">古典名著</option>
+                          <option value ="3">课本教材</option>
+                          <option value ="4">少儿读物</option>
+                          <option value ="5">科幻小说</option>
+                          <option value ="6">鉴赏收藏</option>
+                        </select>
+                    </div>
+                    <div class="form_group">
+                        <label>商品名称：</label>
+                        <input type="text" name="name">
+                    </div>
+                    <div class="form_group">
+                        <label>商品简介：</label>
+                        <input type="text" name="desc">
+                    </div>
+                    <div class="form_group">
+                        <label>商品价格：</label>
+                        <input type="text" name="price">
+                    </div>
+                    <div class="form_group">
+                        <label>商品单位：</label>
+                        <input type="text" name="unit">
+                    </div>
+                    <div class="form_group">
+                        <label>商品库存：</label>
+                        <input type="text" name="stock">
+                    </div>
+                    <div class="form_group">
+                        <label>商品销量：</label>
+                        <input type="text" name="sales">
+                    </div>
+                    <div class="form_group">
+                        <label>发布人员：</label>
+                        <input class="text" name="publisher">
+                    </div>
+
+                    <div class="form_group form_group2">
+                        <label>商品详情：</label>
+                        <textarea class="site_area" name="detail"></textarea>
+                    </div>
+                    <div>
+                        <label>&emsp;&emsp;商品图片：</label>
+                        <input type="file" name="image" accept="image/gif, image/jpeg, image/png, image/jpg">
+                    </div>
+                    <input type="submit" value="上传" class="info_submit">
+                </form>
+            </div>
+        </div>
+
+    </div>
+{% endblock body %}

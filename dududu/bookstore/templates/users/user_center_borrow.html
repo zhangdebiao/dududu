@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}聊天室{% endblock %}
+{% block topfiles %}
+{% endblock topfiles %}
+{% block body %}
+
+	<div class="main_con clearfix">
+		<div class="left_menu_con clearfix">
+			<h3>用户中心</h3>
+			<ul>
+				<li><a href="{% url 'user:user' %}">· 个人信息</a></li>
+				<li><a href="{% url 'user:order' %}">· 全部订单</a></li>
+				<li><a href="{% url 'user:address' %}">· 收货地址</a></li>
+				<li><a href="{% url 'user:borrow' %}" class="active">· 我的借阅</a></li>
+                <li><a href="{% url 'user:borrow' %}">· 嘟嘟币</a></li>
+			</ul>
+		</div>
+		<div class="right_content clearfix">
+				<div class="info_con clearfix">
+				<h3 class="common_title2">基本信息</h3>
+						<ul class="user_info_list">
+							<li><span>用户名：</span>{{ request.session.username }}</li>
+							{% if addr %}
+                                <li><span>联系方式：</span>{{ addr.recipient_phone }}</li>
+                                <li><span>联系地址：</span>{{ addr.recipient_addr }}</li>
+                            {% else %}
+                                <li><span>联系方式：</span>无</li>
+                                <li><span>联系地址：</span>无</li>
+                            {% endif %}
+						</ul>
+				</div>
+		</div>
+	</div>
+
+    <!--聊天框-->
+    <div class="list-group col-md-10 col-md-offset-1 well">
+        <div class="list-group-item">
+            {% for chat in chats %}
+            <h4 class="list-group-item-heading">{{chat.sender}}:{{chat.content}}</h4>
+            <p class="list-group-item-text">{{chat.time}}</p>
+            <input type="hidden" class="chat_id" value="{{chat.id}}"/>
+            <br>
+            {% endfor %}
+        </div>
+    </div>
+    <!--表单-->
+    <form id="chatForm" class="form-horizontal panel container" method="POST" action=".">{% csrf_token %}
+        <div class="form-group col-md-10">
+            <textarea type="text" name="content" id="content" value="" class="form-control" id="exampleMessage" placeholder=""></textarea>
+        </div>
+        <div class="form-group col-md-4">
+            <input type="hidden" name="post_type" value="send_chat"/>
+            <input type="submit" class="btn btn-lg btn-primary" value="发送"/>
+        </div>
+    </form>
+
+{% endblock body %}

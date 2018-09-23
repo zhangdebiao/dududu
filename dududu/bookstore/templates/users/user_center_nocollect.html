@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}嘟嘟读书城-用户中心收藏页{% endblock %}
+{% block topfiles %}
+{% endblock topfiles %}
+{% block body %}
+
+	<div class="main_con clearfix">
+		<div class="left_menu_con clearfix">
+			<h3>用户中心</h3>
+			<ul>
+				<li><a href="{% url 'user:user' %}">· 个人信息</a></li>
+				<li><a href="{% url 'user:order' %}">· 全部订单</a></li>
+				<li><a href="{% url 'user:address' %}">· 收货地址</a></li>
+				<li><a href="{% url 'user:collect' %}" class="active">· 我的收藏</a></li>
+				<li><a href="{% url 'user:upload' %}">· 上传图书</a></li>
+			</ul>
+		</div>
+
+        <div class="right_content clearfix"">
+            <ul class="books_type_list clearfix">
+                <h3 class="common_title2"> 我的收藏</h3>
+                <div class="site_con"><br>
+                    <h2>&ensp;&ensp;&ensp;&ensp;您还没有收藏任何书!</h2>
+                <br></div>
+            </ul>
+        </div>
+	</div>
+{% endblock body %}

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}{% endblock title %}
+
+{% block topfiles %}
+    {% block topfiles2 %}{% endblock topfiles2 %}
+{% endblock topfiles %}
+
+{% block body %}
+
+	<div class="main_con clearfix">
+		<div class="left_menu_con clearfix">
+			<h3>用户中心</h3>
+			<ul>
+				<li><a href="{% url 'user:user' %}" class="active">· 个人信息</a></li>
+				<li><a href="{% url 'user:order' %}">· 全部订单</a></li>
+				<li><a href="{% url 'user:address' %}">· 收货地址</a></li>
+				<li><a href="{% url 'user:borrow' %}">· 我的借阅</a></li>
+                <li><a href="{% url 'user:borrow' %}">· 嘟嘟币</a></li>
+
+			</ul>
+		</div>
+    {% block body2 %}{% endblock body2 %}
+
+{% endblock body %}
+
+{% block bottom %}
+{% block bottom2 %}{# 网页底部html元素块 #}{% endblock bottom2 %}
+{% endblock bottom %}
+
+
+    {% block bottomfiles2 %}{# 网页底部引入文件块 #}{% endblock bottomfiles2 %}
