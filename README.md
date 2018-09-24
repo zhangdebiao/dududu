@@ -31,4 +31,4 @@ Django写的一个图书交易平台，包括bookstore电商交易系统和webch
 * tinymce-富文本编辑器
 * haystack-全文检索框架
 * django-admin后台管理
- 
+* django日志模块配置 
