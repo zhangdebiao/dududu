@@ -112,7 +112,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql', # 配置为mysql
         'NAME': 'bookstore', # 数据库的名字
         'USER': 'admin', # 用户名
-        'PASSWORD': 'Wyb620', # 密码
+        'PASSWORD': '******', # 密码
         'HOST': '127.0.0.1',  # host
         'PORT': 3306,  # 端口
     }
@@ -160,7 +160,7 @@ EMAIL_PORT = 25
 # 发送邮件的邮箱
 EMAIL_HOST_USER = '18530021345@163.com'
 # 在邮箱中设置的客户端授权密码
-EMAIL_HOST_PASSWORD = 'adminlalala163'
+EMAIL_HOST_PASSWORD = '**************'
 # 收件人看到的发件人
 EMAIL_FROM = '嘟嘟读书城<18530021345@163.com>'
 
